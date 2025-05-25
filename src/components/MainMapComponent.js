@@ -23,13 +23,30 @@ function FlyToSelected({ message }) {
 export default function MainMapComponent() {
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
-  const [searchLocation, setSearchLocation] = useState("");
   const [searchType, setSearchType] = useState("");
   const [searchPrice, setSearchPrice] = useState("");
   const [priceRange, setPriceRange] = useState([0, 6000]);
   const [darkMode, setDarkMode] = useState(true);
   const [selectedMessage, setSelectedMessage] = useState(null);
   const modalRef = useRef(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await supabase.from("messages").select("*");
+      if (data) setLocations(data);
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setSelectedMessage(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const houseIcon = new L.Icon({
     iconUrl: darkMode ? houseDark : houseIconUrl,
@@ -45,22 +62,21 @@ export default function MainMapComponent() {
     popupAnchor: [0, -30]
   });
 
-  useEffect(() => {
-    async function fetchData() {
-      const { data, error } = await supabase.from("messages").select("*");
-      if (data) setLocations(data);
-    }
-    fetchData();
-  }, []);
-
   const filtered = locations.filter((msg) => {
     const priceValue = parseFloat(msg.price_num);
+    const keyword = searchPrice.toLowerCase();
     const matchesLocation =
       !selectedLocation ||
       (msg.location && msg.location.split(",")[0].trim() === selectedLocation);
     const matchesType = msg.property?.toLowerCase().includes(searchType.toLowerCase());
-    const matchesPrice = !priceValue || (priceValue >= priceRange[0] && priceValue <= priceRange[1]);
-    return matchesLocation && matchesType && matchesPrice;
+    const matchesKeyword =
+      msg.price?.toLowerCase().includes(keyword) ||
+      msg.property?.toLowerCase().includes(keyword) ||
+      msg.location?.toLowerCase().includes(keyword);
+    const matchesPrice =
+      !priceValue || (priceValue >= priceRange[0] && priceValue <= priceRange[1]);
+
+    return matchesLocation && matchesType && matchesKeyword && matchesPrice;
   });
 
   const locationOptions = Array.from(
@@ -73,8 +89,8 @@ export default function MainMapComponent() {
     )
   ).map((loc) => ({ label: loc, value: loc }));
 
-  const filteredWithCoords = filtered.filter((msg) =>
-    msg.lat && msg.lng && msg.price !== "N/A" && msg.property !== "N/A"
+  const filteredWithCoords = filtered.filter(
+    (msg) => msg.lat && msg.lng && msg.price !== "N/A" && msg.property !== "N/A"
   );
 
   return (
@@ -135,7 +151,7 @@ export default function MainMapComponent() {
           <div className="filter-section">
             <input
               type="text"
-              placeholder="Filter by keywords..."
+              placeholder="Keyword filter..."
               value={searchPrice}
               onChange={(e) => setSearchPrice(e.target.value)}
             />
@@ -144,6 +160,12 @@ export default function MainMapComponent() {
               placeholder="Filter by location..."
               onChange={(selected) => setSelectedLocation(selected?.value || "")}
               isClearable
+            />
+            <input
+              type="text"
+              placeholder="Type filter..."
+              value={searchType}
+              onChange={(e) => setSearchType(e.target.value)}
             />
             <ReactSlider
               className="slider"
