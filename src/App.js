@@ -1,16 +1,14 @@
-import { Routes, Route } from "react-router-dom";
-import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
-import SignUpPage from "./SignUpPage";
-import { useUser } from "@clerk/clerk-react";
-import OnboardingPage from "./pages/OnboardingPage";
+import { Routes, Route } from 'react-router-dom';
+import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 
-import SignInPage from "./SignInPage";
-import MainMapComponent from "./components/MainMapComponent";
+import SignInPage from './SignInPage';
+import SignUpPage from './SignUpPage';
+import OnboardingPage from './pages/OnboardingPage';
+import MainMapComponent from './components/MainMapComponent';
 
 function App() {
   return (
     <>
-      {/**/}
       <div className="absolute top-4 right-4 z-50">
         <SignedIn>
           <UserButton />
@@ -25,7 +23,6 @@ function App() {
         </SignedOut>
       </div>
 
-      {/**/}
       <Routes>
         <Route path="/" element={<MainMapComponent />} />
         <Route path="/sign-in/*" element={<SignInPage />} />
