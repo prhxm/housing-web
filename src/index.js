@@ -7,7 +7,7 @@ import './App.css';
 
 const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 ;
-const clerkJSUrl = process.env.CLERK_JS_URL;
+const clerkJSUrl = process.env.REACT_APP_CLERK_JS_URL;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
