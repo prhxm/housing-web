@@ -250,4 +250,15 @@ button:hover {
   background-color: #eee;
 }
 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Courier New', monospace;
+  background-color: #000;
+  color: #fff;
+}
+
 /* Remove unnecessary block (E) if needed manually in App.js */
