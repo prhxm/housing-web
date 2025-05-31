@@ -2,7 +2,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .map-section {
@@ -108,4 +108,22 @@
 
 .back-to-top:hover {
   background: rgba(255,255,255,0.3);
+}
+@media (max-width: 768px) {
+  .intro-title {
+    font-size: 3rem;
+  }
+
+  .intro-text {
+    font-size: 1.2rem;
+  }
+
+  .intro-scroll {
+    font-size: 3.5rem;
+    margin-top: 60px;
+  }
+
+  .intro-scroll span {
+    margin-top: -40px;
+  }
 }
