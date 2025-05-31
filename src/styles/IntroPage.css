@@ -1,0 +1,68 @@
+.intro-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding: 0 20px;
+  height: 100vh;
+  background-color: black;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: auto;
+  padding-top: 60px; /* کمی بالاتر از وسط */
+}
+
+.intro-title {
+  font-size: 6rem;
+  margin-bottom: 80px;
+  text-shadow: 2px 2px black;
+  font-family: 'Caveat', cursive;
+}
+
+.intro-text {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  line-height: 1.3;
+  text-shadow: 1px 1px black;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.intro-button {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #c0e8ff;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.intro-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.intro-scroll {
+  font-size: 7rem;  
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.85;
+  animation: bounce 1.5s infinite;
+}
+
+.intro-scroll span {
+  margin-top: -85px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}

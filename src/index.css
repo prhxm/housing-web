@@ -1,13 +1,142 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    @apply bg-black text-white m-0 p-0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    background-color: black; /* یا رنگی که بک‌گراند اصلی‌ته */
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.sketch-font {
+  font-family: 'Architects Daughter', cursive;
+  color: white;
+  -webkit-text-stroke: 1.5px white;
+  text-shadow: 
+    0 0 15px rgba(255,255,255,0.4),
+    0 0 30px rgba(255,255,255,0.2);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Perspective grid background */
+.perspective-grid {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 51, 51, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  transform: perspective(1000px) rotateX(60deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.2;
+}
+
+/* Hover effect for Get Home link */
+.group:hover svg {
+  transform: translateX(4px);
+  transition: transform 0.2s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.wireframe-bg {
+  position: relative;
+  background-color: black;
+}
+
+.wireframe-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    /* Floor grid */
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+    /* Finer grid */
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 
+    80px 80px,
+    80px 80px,
+    20px 20px,
+    20px 20px;
+  transform: 
+    perspective(1000px) 
+    rotateX(60deg)
+    scale(3)
+    translateY(-10%);
+  transform-origin: center center;
+  opacity: 0.4;
+}
+
+.wireframe-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Left wall */
+    linear-gradient(170deg, 
+      transparent 0%,
+      transparent 35%,
+      rgba(255,255,255,0.1) 35.1%,
+      rgba(255,255,255,0.1) 45%,
+      transparent 45.1%
+    ),
+    /* Right wall */
+    linear-gradient(-170deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255,255,255,0.1) 35.1%,
+      rgba(255,255,255,0.1) 45%,
+      transparent 45.1%
+    ),
+    /* Back wall */
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  opacity: 0.3;
 }

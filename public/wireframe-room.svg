@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Floor grid -->
+  <g opacity="0.15" stroke="white" stroke-width="1">
+    <!-- Horizontal lines -->
+    <line x1="0" y1="540" x2="1920" y2="540" />
+    <line x1="0" y1="640" x2="1920" y2="640" />
+    <line x1="0" y1="740" x2="1920" y2="740" />
+    <line x1="0" y1="840" x2="1920" y2="840" />
+    <line x1="0" y1="940" x2="1920" y2="940" />
+    
+    <!-- Vertical lines -->
+    <line x1="480" y1="540" x2="480" y2="1080" />
+    <line x1="960" y1="540" x2="960" y2="1080" />
+    <line x1="1440" y1="540" x2="1440" y2="1080" />
+  </g>
+
+  <!-- Room structure -->
+  <g opacity="0.2" stroke="white" stroke-width="1.5">
+    <!-- Left wall -->
+    <line x1="480" y1="0" x2="480" y2="540" />
+    <line x1="520" y1="50" x2="520" y2="520" />
+    
+    <!-- Right wall -->
+    <line x1="1440" y1="0" x2="1440" y2="540" />
+    <line x1="1400" y1="50" x2="1400" y2="520" />
+    
+    <!-- Ceiling lines -->
+    <line x1="480" y1="0" x2="1440" y2="0" />
+    <line x1="520" y1="50" x2="1400" y2="50" />
+    
+    <!-- Perspective lines -->
+    <line x1="480" y1="540" x2="520" y2="520" />
+    <line x1="1440" y1="540" x2="1400" y2="520" />
+    
+    <!-- Room details -->
+    <rect x="600" y="200" width="300" height="200" fill="none" />
+    <rect x="1020" y="200" width="300" height="200" fill="none" />
+  </g>
+
+  <!-- Additional detail lines -->
+  <g opacity="0.1" stroke="white" stroke-width="1">
+    <line x1="720" y1="0" x2="720" y2="540" />
+    <line x1="960" y1="0" x2="960" y2="540" />
+    <line x1="1200" y1="0" x2="1200" y2="540" />
+  </g>
+</svg> 

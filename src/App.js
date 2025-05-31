@@ -1,20 +1,14 @@
-import MainLanding from "./components/MainLanding";
-import { Toaster } from "react-hot-toast";
+// src/App.js
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import IntroPage from "./pages/IntroPage";
 
-export default function App() {
+function App() {
   return (
-    <div className="h-screen w-screen bg-black text-white font-console overflow-hidden relative">
-      <MainLanding />
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          style: {
-            background: "#111",
-            color: "#fff",
-            fontFamily: "Courier New",
-          },
-        }}
-      />
-    </div>
+    <Routes>
+      <Route path="/" element={<IntroPage />} />
+    </Routes>
   );
 }
+
+export default App;
