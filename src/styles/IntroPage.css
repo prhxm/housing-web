@@ -93,12 +93,16 @@
   filter: drop-shadow(0 0 28px rgba(0, 200, 255, 0.8));
 }
 
+/* CSS کامل برای موبایل */
 @media (max-width: 768px) {
   .portal {
+    width: 100px;
+    height: 100px;
     top: 5vh;
     left: 50%;
-    transform: translateX(-50%) rotate(-45deg) scale(0.7);
+    transform: translateX(-50%) rotate(-90deg);
     transform-origin: center center;
+    scale: 0.8;
   }
 }
 
