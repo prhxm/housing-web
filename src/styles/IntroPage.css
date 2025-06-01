@@ -98,9 +98,9 @@
   .portal {
     width: 100px;
     height: 100px;
-    top: 5vh;
+    top: 1vh;
     left: 50%;
-    transform: translateX(-50%) rotate(-90deg) scale(0.8) !important;
+    transform: translateX(-50%) rotate(-90deg) scale(1) !important;
     transform-origin: center center !important;
     position: absolute !important;
     z-index: 10;
