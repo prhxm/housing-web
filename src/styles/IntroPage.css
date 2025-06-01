@@ -97,7 +97,7 @@
   .portal {
     top: 5vh;
     left: 50%;
-    transform: translateX(-50%) rotate(-90deg) scale(0.7);
+    transform: translateX(-50%) rotate(-45deg) scale(0.7);
     transform-origin: center center;
   }
 }
