@@ -50,7 +50,7 @@
   background: rgba(0, 0, 0, 0.9);
   overflow: hidden;
   z-index: 10;
-  color: white;
+  color: #DCD7C9; 
   display: flex;
   align-items: center;
 }
@@ -97,7 +97,7 @@
   top: 40px;
   left: 60px;
   background: rgba(65, 12, 240, 0.1);
-  color: white;
+  color: #DCD7C9; 
   padding: 40px 14px;
   border-radius: 10px;
   cursor: pointer;

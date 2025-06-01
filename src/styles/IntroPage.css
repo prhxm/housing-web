@@ -12,32 +12,38 @@
 .intro-content {
   max-width: 800px;
   margin: auto;
-  padding-top: 60px; /* کمی بالاتر از وسط */
+  padding-top: 60px; /* Adjusted for better visual alignment */
 }
 
 .intro-title {
-  font-size: 6rem;
+  font-size: 4rem;
   margin-bottom: 80px;
   text-shadow: 2px 2px black;
-  font-family: 'Caveat', cursive;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  transform-origin: 90% 50%;
+  color: #A27B5C; 
 }
 
 .intro-text {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   margin-bottom: 30px;
   line-height: 1.3;
   text-shadow: 1px 1px black;
-  font-family: 'Patrick Hand', cursive;
+  font-family: Georgia, serif;
+  transform-origin: 90% 50%;
+  color: #DCD7C9; 
 }
 
 .intro-button {
   text-decoration: none;
   font-size: 1.1rem;
-  color: #c0e8ff;
+  color: #DCD7C9; 
   background-color: rgba(255, 255, 255, 0.1);
   padding: 10px 20px;
   border-radius: 10px;
   transition: all 0.3s ease;
+  transform-origin: 90% 50%;
 }
 
 .intro-button:hover {
@@ -52,6 +58,8 @@
   align-items: center;
   opacity: 0.85;
   animation: bounce 1.5s infinite;
+  transform-origin: 90% 50%;
+  color: #DCD7C9; 
 }
 
 .intro-scroll span {
@@ -64,5 +72,55 @@
   }
   50% {
     transform: translateY(10px);
+  }
+}
+
+
+.portal {
+  position: absolute;
+  right: 10%;
+  top: 45%;
+  transform: translateY(-50%) scale(1);
+  width: 170px;
+  height: 340px;
+  cursor: pointer;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 12px rgba(0, 200, 255, 0.4));
+}
+
+.portal:hover {
+  transform: translateY(-50%) scale(1.3);
+  filter: drop-shadow(0 0 28px rgba(0, 200, 255, 0.8));
+}
+
+@media (max-width: 768px) {
+  .portal {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.teleport-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(0,0,0,0.8) 0%, black 100%);
+  z-index: 9999;
+  pointer-events: none;
+}
+.cursor {
+  display: inline-block;
+  width: 1px;
+  background-color: black;
+  animation: blink 1s step-start infinite;
+  margin-left: 3px;
+  height: 0rem;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }

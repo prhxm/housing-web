@@ -1,0 +1,75 @@
+/* src/styles/SignupPage.css */
+
+.signup-container {
+  background-image: url("../icons/SignupBackground.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #DCD7C9; 
+  font-family: console;
+}
+
+.signup-box {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+.signup-box input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: #111;
+  color: #DCD7C9; 
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-family: console;
+}
+
+.signup-box input::placeholder {
+  color: #DCD7C9; 
+}
+
+.signup-box button {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  background: #444;
+  color: #DCD7C9;
+  border: none;
+  border-radius: 8px;
+  font-family: console;
+  transition: 0.3s;
+}
+
+.signup-box button:hover {
+  color: #DCD7C9; 
+  color: black;
+}
+.typewriter-heading {
+  display: inline-block;
+  border-right: 2px solid rgba(255,255,255,0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1.5rem;
+  animation:
+    typing 2.5s steps(25, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgba(255,255,255,0.75); }
+}
