@@ -95,16 +95,13 @@
 
 @media (max-width: 768px) {
   .portal {
-    top: 0;
+    top: 10%;
     right: 50%;
-    left: auto;
-    transform: translateX(50%) rotate(-90deg) scale(0.9);
-    transform-origin: center;
-    width: 90px;
-    height: 180px;
-    z-index: 1;
+    transform: translateX(50%) rotate(-90deg) scale(0.7);
+    transform-origin: center center;
   }
 }
+
 
 
 .teleport-overlay {
