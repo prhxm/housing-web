@@ -100,9 +100,8 @@
     height: 100px;
     top: 5vh;
     left: 50%;
-    transform: translateX(-50%) rotate(-90deg);
+    transform: translateX(-50%) rotate(-90deg) scale(0.8);
     transform-origin: center center;
-    scale: 0.8;
   }
 }
 
