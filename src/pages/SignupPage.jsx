@@ -4,7 +4,7 @@ import { useSignUp, useSignIn } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle, FaLinkedin, FaEye, FaEyeSlash } from "react-icons/fa";
 import ReCAPTCHA from "react-google-recaptcha";
-import "../styles/signupPage.css";
+import "../styles/SignupPage.css";
 
 export default function CustomAuth() {
   const [isLogin, setIsLogin] = useState(true);
