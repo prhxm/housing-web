@@ -1,75 +1,177 @@
-/* src/styles/SignupPage.css */
-
 .signup-container {
-  background-image: url("../icons/SignupBackground.png");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #DCD7C9; 
-  font-family: console;
+  height: 100vh;
+  background-image: url("../icons/SignupBackground.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.signup-box {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  width: 320px;
-  text-align: center;
-}
-
-.signup-box input {
+.signup-form {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 12px;
+  color: #dcd7c9;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  background: #111;
-  color: #DCD7C9; 
-  border: 1px solid #333;
-  border-radius: 8px;
-  font-family: console;
+  max-width: 400px;
+  box-sizing: border-box;
 }
 
-.signup-box input::placeholder {
-  color: #DCD7C9; 
-}
-
-.signup-box button {
-  margin-top: 20px;
-  padding: 12px;
-  width: 100%;
-  background: #444;
-  color: #DCD7C9;
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"],
+.signup-form input[type="confirm-password"],
+.signup-form button {
+  padding: 10px;
+  border-radius: 6px;
   border: none;
-  border-radius: 8px;
-  font-family: console;
-  transition: 0.3s;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.signup-box button:hover {
-  color: #DCD7C9; 
+.signup-form button {
+  background-color: #f3f3f3;
   color: black;
+  cursor: pointer;
 }
-.typewriter-heading {
+
+.role-select {
+  display: flex;
+  justify-content: space-around;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.cursor {
   display: inline-block;
-  border-right: 2px solid rgba(255,255,255,0.75);
-  white-space: nowrap;
+  width: 1px;
+  background-color: #dcd7c9;
+  animation: blink 1s infinite;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.oauth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.oauth-btn {
+  background-color: #f3f3f3;
+  color: black;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px 8px 0 0;
   overflow: hidden;
-  font-size: 1.5rem;
-  animation:
-    typing 2.5s steps(25, end),
-    blink-caret 0.75s step-end infinite;
+  width: 100%;
+  max-width: 400px;
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+.auth-tabs button {
+  flex: 1;
+  padding: 12px 0;
+  background-color: transparent;
+  color: #ccc;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 2px solid transparent;
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: rgba(255,255,255,0.75); }
+.auth-tabs button:hover {
+  color: white;
+}
+
+.auth-tabs button.active {
+  color: white;
+  border-bottom: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+  font-size: 18px;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* جا برای آیکون */
+}
+.tab-toggle {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 20px;
+  margin-bottom: 200px;
+  transform: rotate(-90deg);
+  z-index: 2;
+  right: -70px;
+}
+
+.tab-toggle button {
+  padding: 8px 20px;
+  margin: 0 2px;
+  border: none;
+  background-color: rgba(255,255,255,0.1);
+  color: #ccc;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px 8px 0 0;
+}
+
+.tab-toggle button.active {
+  background-color: rgba(255,255,255,0.25);
+  color: white;
+  font-weight: bold;
 }
