@@ -1,0 +1,69 @@
+/* فونت کنسول اختصاصی */
+.font-console {
+  font-family: "Courier New", monospace;
+}
+
+/* اسکرول سفارشی برای لیست خانه‌ها */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #cfa75d;
+  border-radius: 4px;
+}
+
+/* انیمیشن برای دکمه‌های نوار بالا */
+button:hover {
+  transition: all 0.2s ease-in-out;
+}
+
+/* نوار بالا */
+.navbar-button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+.navbar-button:hover {
+  color: #facc15;
+  border-color: #facc15;
+}
+
+/* لیست خانه‌ها */
+.house-item {
+  border: 1px solid #facc15;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.house-item:hover {
+  background-color: rgba(234, 179, 8, 0.15); /* زرد کم‌رنگ */
+}
+
+/* کارت پروفایل */
+.profile-card {
+  border: 1px solid #facc15;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.profile-card h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.profile-card p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.profile-card .coin {
+  color: #facc15;
+  font-weight: bold;
+  font-size: 20px;
+}

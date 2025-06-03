@@ -49,18 +49,27 @@ export default function CustomAuth() {
     }
 
     try {
-      await signUp.create({
+      const createdUser = await signUp.create({
         emailAddress: email,
         password,
         firstName: username,
       });
+
       await signUp.update({ publicMetadata: { role } });
+
+      // 💡 این قسمت لازم نیست activate کنی، چون قصد داری کاربر رو بفرستی تایید کنه
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-      navigate("/verify-email");
+
+      // 🧠 اینجا createdSessionId ذخیره می‌شه تا بعداً در verify ازش استفاده شه
+      localStorage.setItem("createdSessionId", createdUser.createdSessionId);
+
+      navigate("/verify-email", { state: { email } });
     } catch (err) {
-      setError(err.errors[0]?.message || "Signup failed");
+      setError(err.errors?.[0]?.message || "Signup failed");
+      console.error("❌ Signup failed:", err);
     }
   };
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
