@@ -52,7 +52,7 @@ export default function CustomAuth() {
       const createdUser = await signUp.create({
         emailAddress: email,
         password,
-        firstName: username,
+        username: username,
       });
 
       await signUp.update({ publicMetadata: { role } });
