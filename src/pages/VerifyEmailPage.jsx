@@ -1,33 +1,32 @@
-import { useSignUp } from "@clerk/clerk-react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useSignUp } from "@clerk/clerk-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function VerifyEmailPage() {
+  const [code, setCode] = useState("");
+  const [error, setError] = useState("");
   const { signUp, setActive } = useSignUp();
   const navigate = useNavigate();
   const location = useLocation();
-  const [code, setCode] = useState("");
-  const [error, setError] = useState("");
-
   const email = location.state?.email;
 
   const handleVerify = async (e) => {
     e.preventDefault();
     try {
       await signUp.attemptEmailAddressVerification({ code });
-      const storedSessionId = localStorage.getItem("createdSessionId");
-      await setActive({ session: storedSessionId });
+      await setActive({ session: signUp.createdSessionId });
       navigate("/dashboard");
     } catch (err) {
-      setError("Verification failed. Try again.");
+      console.error("VERIFICATION ERROR:", err);
+      setError(err?.errors?.[0]?.message || err.message || "Verification failed");
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-white">
       <form onSubmit={handleVerify} className="p-6 bg-white/10 rounded-lg w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-4">🔐 Verify your Email</h2>
-        <p className="mb-2 text-sm">We sent a 6-digit code to <strong>{email}</strong></p>
+        <h2 className="text-2xl font-bold mb-4 text-center">📩 Verify your Email</h2>
+        <p className="mb-2 text-sm text-center">We sent a 6-digit code to <strong>{email}</strong></p>
 
         <input
           type="text"
@@ -38,12 +37,9 @@ export default function VerifyEmailPage() {
           required
         />
 
-        {error && <p className="text-red-400 mb-2 text-sm">{error}</p>}
+        {error && <p className="text-red-400 mb-2 text-sm text-center">{error}</p>}
 
-        <button
-          type="submit"
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded"
-        >
+        <button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded">
           Verify & Continue
         </button>
       </form>

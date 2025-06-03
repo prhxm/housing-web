@@ -4,14 +4,18 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function DashboardPage() {
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (isLoaded && !user) {
       navigate("/signup");
     }
-  }, [user]);
+  }, [user, isLoaded]);
+
+  if (!isLoaded) {
+    return <div className="text-white text-center mt-20">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
