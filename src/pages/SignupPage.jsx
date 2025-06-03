@@ -65,9 +65,10 @@ export default function CustomAuth() {
 
       navigate("/verify-email", { state: { email } });
     } catch (err) {
-      setError(err.errors?.[0]?.message || "Signup failed");
-      console.error("❌ Signup failed:", err);
+      console.error("SIGNUP ERROR:", err);
+      setError(err?.errors?.[0]?.message || err.message || "Signup failed");
     }
+
   };
 
 
