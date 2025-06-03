@@ -23,26 +23,37 @@ export default function VerifyEmailPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white">
-      <form onSubmit={handleVerify} className="p-6 bg-white/10 rounded-lg w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-4 text-center">📩 Verify your Email</h2>
-        <p className="mb-2 text-sm text-center">We sent a 6-digit code to <strong>{email}</strong></p>
+    <div className="min-h-screen flex items-center justify-center bg-black text-white px-4">
+      <form
+        onSubmit={handleVerify}
+        className="bg-white/10 rounded-lg p-6 w-full max-w-sm flex flex-col space-y-4"
+      >
+        <div className="text-center">
+          <div className="text-4xl font-bold text-blue-400 mb-2">📩 Email</div>
+          <p className="text-sm text-gray-300">
+            We've sent a <span className="text-yellow-400 font-semibold">6-digit code</span> to your email.
+          </p>
+        </div>
 
         <input
           type="text"
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter 6-digit code"
-          className="w-full p-2 rounded bg-black border border-white text-white mb-4"
+          className="w-full p-2 rounded bg-black border border-white text-white text-center tracking-widest"
           required
         />
 
-        {error && <p className="text-red-400 mb-2 text-sm text-center">{error}</p>}
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
-        <button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded">
-          Verify & Continue
+        <button
+          type="submit"
+          className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded"
+        >
+          ✅ Verify & Continue
         </button>
       </form>
     </div>
   );
+
 }
