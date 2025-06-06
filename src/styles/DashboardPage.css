@@ -9,7 +9,7 @@
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-  background-color: #cfa75d;
+  background-color: #A27B5C;
   border-radius: 4px;
 }
 
@@ -26,13 +26,13 @@ button:hover {
 }
 
 .navbar-button:hover {
-  color: #facc15;
-  border-color: #facc15;
+  color: #A27B5C;
+  border-color: #A27B5C;
 }
 
 /* لیست خانه‌ها */
 .house-item {
-  border: 1px solid #facc15;
+  border: 1px solid #A27B5C;
   padding: 8px 12px;
   border-radius: 8px;
   transition: background-color 0.2s ease-in-out;
@@ -44,12 +44,12 @@ button:hover {
 
 /* کارت پروفایل */
 .profile-card {
-  border: 1px solid #facc15;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 300px;
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(0,0,0,0.7);
+  border: 1px solid #A27B5C;
+  padding: 16px;
+  border-radius: 8px;
 }
+
 
 .profile-card h2 {
   font-size: 20px;
@@ -63,7 +63,64 @@ button:hover {
 }
 
 .profile-card .coin {
-  color: #facc15;
+  color: #A27B5C;
   font-weight: bold;
   font-size: 20px;
+}
+
+ 
+.dashboard-background {
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+
+  opacity: 0.25; 
+  animation: moveBG 60s ease-in-out infinite alternate;
+}
+
+@keyframes moveBG {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+/* 🌫️ ماسک مه‌آلود + pulse */
+.blur-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle at 50% 40%, 
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0.25) 55%,
+    rgba(0, 0, 0, 0.6) 80%,
+    rgba(0, 0, 0, 0.85) 95%
+  );
+
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
 }

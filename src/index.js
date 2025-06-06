@@ -5,15 +5,17 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
-
 const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
-const clerkFrontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
+
+if (!clerkPubKey) {
+  throw new Error("Missing Clerk publishableKey. Check your .env.local file.");
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <ClerkProvider publishableKey={clerkPubKey} frontendApi ={clerkFrontendApi}>
+    <ClerkProvider publishableKey={clerkPubKey}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

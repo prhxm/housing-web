@@ -1,76 +1,104 @@
+// src/pages/dashboard/DashboardLayout.jsx
 import { useUser } from "@clerk/clerk-react";
 import { useState } from "react";
-import "@/styles/DashboardPage.css"; // اگر فایلی برای استایل خاص داری اینجا ایمپورت کن
+import "../../styles/DashboardPage.css";
+import ProfileMenu from "./ProfileMenu";
+import "../../styles/ProfileMenu.css";
+
+
 
 export default function DashboardLayout() {
   const { user } = useUser();
-  const role = user?.publicMetadata?.role || "landlord"; // فرض بر اینکه فقط landlord داری فعلاً
-  const [activeTab, setActiveTab] = useState("Situation");
+  const role = user?.publicMetadata?.role || "landlord";
+  const [activeTab, setActiveTab] = useState("Global");
 
   const fakeHouses = ["My House", "North House-2", "West Apartment"];
 
-  return (
-    <div className="min-h-screen bg-black text-white p-4 font-console">
-      {/* Navbar بالا */}
-      <div className="flex justify-between items-center mb-6 border-b border-gray-700 pb-2">
-        <div className="flex space-x-6 text-lg">
-          <button className="hover:text-yellow-400">Dashboard</button>
-          <button className="hover:text-yellow-400">Search</button>
-          <button className="hover:text-yellow-400">Massage</button>
-          <button className="hover:text-yellow-400">Options</button>
-        </div>
-        <div className="text-right">
-          <p className="text-sm text-yellow-400">{role === "landlord" ? "LandlorD" : "Tenant"}</p>
-          <div className="rounded-full border border-yellow-400 px-3 py-1 inline-block mt-1">
-            <span className="uppercase font-bold text-sm">pro<br />file</span>
-          </div>
-        </div>
-      </div>
+  console.log("DashboardLayout loaded ✅");
 
-      {/* محتوای وسط - دو ستون */}
-      <div className="grid grid-cols-12 gap-6">
-        {/* ستون لیست خانه‌ها */}
-        <div className="col-span-3 border-r border-yellow-700 pr-4">
-          <div className="flex space-x-4 mb-4 text-yellow-400">
-            <button className="border-b-2 border-yellow-400 pb-1">Situation</button>
-            <button className="text-gray-500">History</button>
-            <button className="text-gray-500">Finance</button>
-          </div>
-
-          <div className="space-y-2 overflow-y-auto max-h-[300px] custom-scroll pr-2">
+  // Function to render main tab content
+  const renderMainContent = () => {
+    if (activeTab === "Global") {
+      return (
+        <div>
+          <h2 className="text-2xl mb-4">🌍 Global Feed (Coming soon)</h2>
+          <div className="space-y-2">
             {fakeHouses.map((house, i) => (
-              <div
-                key={i}
-                className="hover:bg-yellow-900/20 p-2 rounded border border-yellow-700"
-              >
+              <div key={i} className="house-item">
                 {house}
               </div>
             ))}
           </div>
         </div>
+      );
+    } else if (activeTab === "History") {
+      return (
+        <div>
+          <h2 className="text-2xl mb-4">📜 Your History (Coming soon)</h2>
+          <p>Here you will see your activity history.</p>
+        </div>
+      );
+    } else if (activeTab === "Finance") {
+      return (
+        <div>
+          <h2 className="text-2xl mb-4">💰 Finance Dashboard (Coming soon)</h2>
+          <p>Here you will see your financial stats.</p>
+        </div>
+      );
+    } else {
+      return <p>Unknown tab.</p>;
+    }
+  };
 
-        {/* ستون پروفایل سمت راست */}
-        <div className="col-span-9">
-          <div className="border border-yellow-600 p-4 rounded-xl max-w-sm ml-auto">
-            <h2 className="text-xl font-bold mb-1">Parham Parvizi</h2>
-            <p className="text-sm text-gray-400 mb-4">Parham.Parvizi@gmail.com</p>
-            <p className="mb-2">
-              <strong>340Days</strong>
-            </p>
-            <p className="text-yellow-400 font-bold text-xl mb-2">
-              2642.2 <span className="text-sm">RG coin</span>
-            </p>
-            <div className="flex space-x-1 mb-4">
-              {Array(5).fill(0).map((_, i) => (
-                <span key={i}>⭐</span>
-              ))}
-            </div>
-            <button className="block w-full border border-yellow-400 text-yellow-300 py-1 mb-2">
-              Massage
-            </button>
-            <button className="block w-full border border-yellow-400 text-yellow-300 py-1">
-              Options
-            </button>
+  return (
+    <div className="relative min-h-screen flex flex-col bg-black text-white font-console p-8 overflow-hidden">
+      {/* Background */}
+      <div
+        className="dashboard-background"
+        style={{ backgroundImage: 'url("/icons/astrospace.png")' }}
+      ></div>
+
+      {/* Blur mask */}
+      <div className="blur-mask"></div>
+
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6 border-b border-yellow-700 pb-2 z-10">
+        <div className="flex space-x-6 text-lg">
+          <button className="navbar-button">Dashboard</button>
+          <button className="navbar-button">Search</button>
+          <button className="navbar-button">Massage</button>
+          <button className="navbar-button">Options</button>
+        </div>
+        <div className="relative flex items-center justify-end space-x-2 w-52">
+          <p className="text-sm text-yellow-400">{role === "landlord" ? "LandlorD" : "Tenant"}</p>
+          <ProfileMenu />
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="grid grid-cols-12 gap-6 z-10 flex-grow">
+        {/* Sidebar */}
+        <div className="col-span-3 border-r border-yellow-700 pr-4">
+          <div className="flex flex-col space-y-2 mb-6 text-yellow-400">
+            {["Global", "History", "Finance"].map((tab) => (
+              <button
+                key={tab}
+                className={`text-left ${
+                  activeTab === tab ? "border-b-2 border-yellow-400 pb-1" : "text-gray-500"
+                }`}
+                onClick={() => setActiveTab(tab)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Main tab content + Profile Card */}
+        <div className="col-span-9 flex flex-col space-y-6">
+          {/* Main tab content */}
+          <div className="border border-yellow-600 p-4 rounded-xl bg-black bg-opacity-70 flex-grow">
+            {renderMainContent()}
           </div>
         </div>
       </div>
